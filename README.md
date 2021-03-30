@@ -2,7 +2,7 @@
  Reversi game. 
  
  Developers: 
- Béres Dániel Csaba
- Dankó Tibor
+ Béres Dániel Csaba ,
+ Dankó Tibor ,
  Dobos Zoltán
  
