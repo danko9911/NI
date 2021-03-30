@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Reversi"
+        xmlns:local="clr-namespace:NI_Fonakolos_játék"
         mc:Ignorable="d"
         Title="NewGameWindow" Height="294" Width="311" Background="#FF3B6439">
 
