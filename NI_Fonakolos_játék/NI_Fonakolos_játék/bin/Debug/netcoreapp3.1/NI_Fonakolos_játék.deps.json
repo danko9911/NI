@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "NI_Fonakolos_játék/1.0.0": {
+        "runtime": {
+          "NI_Fonakolos_játék.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "NI_Fonakolos_játék/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

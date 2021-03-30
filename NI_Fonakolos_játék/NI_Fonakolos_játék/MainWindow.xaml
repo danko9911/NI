@@ -5,8 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NI_Fonakolos_játék"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="700" Width="1000">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="12*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="menu_bar" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="new_game_btn" Grid.Column="0" Content="Új játék" FontSize="30"/>
+            <Button Name="high_score_btn" Grid.Column="1" Content="Pontszámok" FontSize="30"/>
+            <Button Name="rules_btn" Grid.Column="2" Content="Szabályok" FontSize="30" Click="rules_btn_Click"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Canvas Grid.Column="0" x:Name="game_board" >
+                <Canvas.Background>
+                    <ImageBrush ImageSource="Resources/board_bg.jpg" Stretch="Fill"/>
+                </Canvas.Background>
+            </Canvas>
+            <Grid x:Name="Points_ingame_menu" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Pontok" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32"/>
+                <TextBlock Text="Játékos:" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32"/>
+                <TextBlock Text="AI: " Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32"/>
+                <Button Content="Lépés visszavonása" Grid.Row="5"  FontSize="32"/>
+                <Button Content="Feladás" Grid.Row="6"  FontSize="32"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
