@@ -28,7 +28,8 @@ namespace NI_Fonakolos_játék
 
         private void rules_btn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("A játék szabályai: \n \n - A játékot két ember játszhatja \n - A cél minnél több pontot szerezni.\n   Ezt a saját korongjaink száma határozza meg.");
+            MessageBox.Show("A játék szabályai: \n \n - A játékot két ember játszhatja \n - A cél minnél több pontot szerezni.\n   Ezt a saját korongjaink száma határozza meg." +
+                "\n - Korongot akkor lehet lehelyezni, \n   ha közrefogja az ellenfél korongjait. \n - A játékosoknak lépéskötelezetsége van minden körben!" );
         }
     }
 }
