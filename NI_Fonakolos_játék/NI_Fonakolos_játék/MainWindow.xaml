@@ -17,7 +17,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Name="new_game_btn" Grid.Column="0" Content="Új játék" FontSize="30"/>
+            <Button Name="new_game_btn" Grid.Column="0" Content="Új játék" FontSize="30" Click="new_game_btn_Click"/>
             <Button Name="high_score_btn" Grid.Column="1" Content="Pontszámok" FontSize="30"/>
             <Button Name="rules_btn" Grid.Column="2" Content="Szabályok" FontSize="30" Click="rules_btn_Click"/>
         </Grid>
