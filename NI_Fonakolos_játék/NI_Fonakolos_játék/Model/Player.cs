@@ -12,7 +12,7 @@ namespace NI_Fonakolos_játék.Model
 
         public string time { get; set; }
 
-        public int bestScore { get; set; }
+        public int Score { get; set; }
 
         public string FullName
         {
