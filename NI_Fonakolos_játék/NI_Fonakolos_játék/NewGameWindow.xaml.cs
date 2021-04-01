@@ -42,7 +42,9 @@ namespace NI_Fonakolos_játék
 
         private void exitBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
         }
     }
 }
