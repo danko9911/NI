@@ -1,4 +1,5 @@
 ﻿using NI_Fonakolos_játék.Model;
+using NI_Fonakolos_játék.ModelView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,17 +26,18 @@ namespace NI_Fonakolos_játék
         {
 
             InitializeComponent();
-            LoadPeopleList();
-            listPeople();
+           // LoadPeopleList();
+            listPoeple();
         }
-
+        /*
         private void LoadPeopleList()
         {
-            //list = ScoreBoard.LoadPeople(); <- ez egy hiányzó metódus
-            list = list.OrderByDescending(Player => Player.bestScore).ToList();
+            list = ScoreBoardView.LoadPeople();
+            list = list.OrderByDescending(Player => Player.Score).ToList();
 
         }
-        private void listPeople()
+        */
+        private void listPoeple()
         {
             int k = 0;
             int i = 1;
@@ -58,7 +60,7 @@ namespace NI_Fonakolos_játék
                 grid.Children.Add(blocklist[i, k]);
                 k++;
                 blocklist[i, k] = new TextBlock();
-                blocklist[i, k].Text = item.bestScore.ToString();
+                blocklist[i, k].Text = item.Score.ToString();
                 Grid.SetRow(blocklist[i, k], i);
                 Grid.SetColumn(blocklist[i, k], k);
                 blocklist[i, k].FontSize = 28;
