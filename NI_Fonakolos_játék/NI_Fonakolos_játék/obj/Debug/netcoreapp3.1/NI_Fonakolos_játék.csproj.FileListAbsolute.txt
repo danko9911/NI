@@ -21,3 +21,5 @@ C:\Users\septe\Documents\GitHub\Reversi\NI_Fonakolos_játék\NI_Fonakolos_játé
 C:\Users\septe\Documents\GitHub\Reversi\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_Fonakolos_játék.Properties.Resources.resources
 C:\Users\septe\Documents\GitHub\Reversi\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NewGameWindow.g.cs
 C:\Users\septe\Documents\GitHub\Reversi\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NewGameWindow.baml
+C:\Users\septe\Documents\GitHub\Reversi\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\ScoreBoard.g.cs
+C:\Users\septe\Documents\GitHub\Reversi\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\ScoreBoard.baml
