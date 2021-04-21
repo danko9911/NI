@@ -44,7 +44,7 @@ namespace NI_Fonakolos_játék
         {
             MainWindow main = new MainWindow();
             main.Show();
-            Close();
+            this.Close();
         }
     }
 }
