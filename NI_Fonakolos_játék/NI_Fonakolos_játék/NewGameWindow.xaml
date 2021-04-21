@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NI_Fonakolos_játék"
         mc:Ignorable="d"
-        Title="Új Játék" Height="324" Width="311" Background="#FF3B6439">
+        Title="New Game" Height="323" Width="325" Background="DimGray">
 
 
-    <Grid>
+    <Grid Margin="0,0,0,16">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25*"/>
             <ColumnDefinition Width="131*"/>
@@ -21,6 +21,7 @@
         <Button x:Name="playBTN" Content="PLAY" HorizontalAlignment="Left" Margin="15,238,0,0" VerticalAlignment="Top" Width="120" Height="30" Grid.ColumnSpan="2" Click="playBTN_Click"  />
         <TextBlock x:Name="Player2"  Margin="15,187,145,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Visibility="Visible" Text="Second Player: " Grid.ColumnSpan="2"/>
         <TextBlock x:Name="Player1"  Margin="15,144,185,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Visibility="Visible" Text="First Player: " Grid.ColumnSpan="2"/>
+        <Image Source="/images.png" Grid.Column="1" Margin="137,-65,50,65" />
 
 
 

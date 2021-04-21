@@ -1,4 +1,4 @@
-﻿using NI_Fonakolos_játék.Model;
+using NI_Fonakolos_játék.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,7 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NI_Fonakolos_játék.ModelWiew
+
+namespace NI_Fonakolos_játék.ModelView
 {
     class ScoreBoardView
     {
