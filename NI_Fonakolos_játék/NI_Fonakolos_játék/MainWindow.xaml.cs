@@ -20,9 +20,60 @@ namespace NI_Fonakolos_játék
     /// </summary>
     public partial class MainWindow : Window
     {
+        public int playerTurn; //white = 0 / black = 1
+        Model.BoardMesh game = new Model.BoardMesh();
+        
         public MainWindow()
         {
             InitializeComponent();
+            drawBoard();
+            playerTurn = 0;
+        }
+
+        public void drawBoard()
+        {
+            foreach (Model.BoardTile tile in game.gameMesh)
+            {
+                Ellipse myEllipse = new Ellipse();               
+                myEllipse.Width = 65;
+                myEllipse.Height = 65;
+                Canvas.SetLeft(myEllipse, tile.pos_x);
+                Canvas.SetTop(myEllipse, tile.pos_y);
+
+
+                switch (tile.field_owner)
+                {
+                    case 1: myEllipse.Fill = System.Windows.Media.Brushes.White; break;
+                    case 2: myEllipse.Fill = System.Windows.Media.Brushes.Black; break;
+                }
+
+                game_board.Children.Add(myEllipse);
+            }
+        }
+
+        public int calculateMousePosition(double x, double y)
+        {
+            //Callibrate position
+            x -= 65;
+            y -= 125;
+            int id = 0;
+            foreach(Model.BoardTile tile in game.gameMesh)
+            {
+
+                if(tile.pos_x > x)
+                {
+                    for(int i = id; i < id+8; i++)
+                    {
+                        if(game.gameMesh[i].pos_y > y){
+                            return i;
+                        }
+                    }
+                }
+
+                id++;
+            }
+            
+            return id;
         }
 
 
@@ -38,5 +89,16 @@ namespace NI_Fonakolos_játék
             new_game.Show();
             this.Close();
         }
+
+        private void game_board_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Point p = e.GetPosition(this);
+            
+            game.gameMesh[calculateMousePosition(p.X, p.Y)].field_owner = playerTurn + 1;
+            drawBoard();
+            playerTurn = (playerTurn + 1) % 2;
+        }
+
+        
     }
 }

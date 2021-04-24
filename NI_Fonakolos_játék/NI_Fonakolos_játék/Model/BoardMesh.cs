@@ -6,28 +6,38 @@ namespace NI_Fonakolos_játék.Model
 {
     class BoardMesh
     {
-        List<BoardTile> gameMesh = new List<BoardTile>();
+        public List<BoardTile> gameMesh = new List<BoardTile>();
 
         public BoardMesh()
         {
-
+            createTable();
         }
 
         public void createTable()
         {
-            int x = 0;
-            int y = 0;
+            double x = -58;
+            double y = -63;
             for(int i = 0; i<8; i++)
             {
-                y = 0;
-                x += 50;
+                y = -63;
+                x += 72.3;
                 for(int j = 0; j<8; j++)
                 {
-                    y += 50;
+                    y += 73.3;
                     gameMesh.Add(new BoardTile(x, y));
                 }
             }
+
+            startPhase();
             
+        }
+
+        public void startPhase()
+        {
+            gameMesh[27].field_owner = 1;
+            gameMesh[36].field_owner = 1;
+            gameMesh[35].field_owner = 2;
+            gameMesh[28].field_owner = 2;
         }
     }
 }
