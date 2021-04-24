@@ -9,25 +9,22 @@
   },
   "packageFolders": {
     "C:\\Users\\septe\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\septe\\Documents\\GitHub\\Reversi\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj",
+      "projectUniqueName": "C:\\Users\\septe\\Documents\\GitHub\\NI\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj",
       "projectName": "NI_Fonakolos_játék",
-      "projectPath": "C:\\Users\\septe\\Documents\\GitHub\\Reversi\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj",
+      "projectPath": "C:\\Users\\septe\\Documents\\GitHub\\NI\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj",
       "packagesPath": "C:\\Users\\septe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\septe\\Documents\\GitHub\\Reversi\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\obj\\",
+      "outputPath": "C:\\Users\\septe\\Documents\\GitHub\\NI\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
         "C:\\Users\\septe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -40,7 +37,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -52,7 +48,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -71,7 +66,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
