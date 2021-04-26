@@ -5,6 +5,9 @@ using System.Windows;
 
 namespace NI_Fonakolos_játék.Model
 {
+    /// <summary>
+    /// Model class for each tile on board.
+    /// </summary>
     class BoardTile
     {
         public double pos_x { get; private set; }

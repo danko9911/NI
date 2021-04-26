@@ -14,13 +14,7 @@ namespace NI_Fonakolos_játék.Model
 
         public int bestScore { get; set; }
 
-        public string FullName
-        {
-            get
-            {
-                return $"{firstName}{lastName}";
-            }
-        }
+        public string FullName => firstName + " " +lastName;
 
     }
 }

@@ -50,32 +50,7 @@ namespace NI_Fonakolos_játék
                 game_board.Children.Add(myEllipse);
             }
         }
-
-        public int calculateMousePosition(double x, double y)
-        {
-            //Callibrate position
-            x -= 65;
-            y -= 125;
-            int id = 0;
-            foreach(Model.BoardTile tile in game.gameMesh)
-            {
-
-                if(tile.pos_x > x)
-                {
-                    for(int i = id; i < id+8; i++)
-                    {
-                        if(game.gameMesh[i].pos_y > y){
-                            return i;
-                        }
-                    }
-                }
-
-                id++;
-            }
-            
-            return id;
-        }
-
+        
 
         private void rules_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -94,7 +69,7 @@ namespace NI_Fonakolos_játék
         {
             Point p = e.GetPosition(this);
             
-            game.gameMesh[calculateMousePosition(p.X, p.Y)].field_owner = playerTurn + 1;
+            game.gameMesh[game.calculateMousePosition(p.X, p.Y)].field_owner = playerTurn + 1;
             drawBoard();
             playerTurn = (playerTurn + 1) % 2;
         }

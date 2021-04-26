@@ -4,6 +4,9 @@ using System.Text;
 
 namespace NI_Fonakolos_játék.Model
 {
+    /// <summary>
+    /// Logical for BoardTile Class. Contains the list of tiles.
+    /// </summary>
     class BoardMesh
     {
         public List<BoardTile> gameMesh = new List<BoardTile>();
@@ -39,5 +42,48 @@ namespace NI_Fonakolos_játék.Model
             gameMesh[35].field_owner = 2;
             gameMesh[28].field_owner = 2;
         }
+
+        public int calculateMousePosition(double x, double y)
+        {
+            //Callibrate position
+            x -= 65;
+            y -= 125;
+            int id = 0;
+            foreach (Model.BoardTile tile in gameMesh)
+            {
+
+                if (tile.pos_x > x)
+                {
+                    for (int i = id; i < id + 8; i++)
+                    {
+                        if (gameMesh[i].pos_y > y)
+                        {
+                            return i;
+                        }
+                    }
+                }
+
+                id++;
+            }
+
+            return id;
+        }
+
+        public List<BoardTile> calcualteNextStep(int id)
+        {
+            List<BoardTile> suggestedTiles = new List<BoardTile>();
+            PlayerSteps newStep = new PlayerSteps(gameMesh);
+
+            foreach (PlayerSteps.Directions dir in (PlayerSteps.Directions[])Enum.GetValues(typeof(PlayerSteps.Directions)))
+            {
+                int finalID = newStep.suggestedStep(id, dir);
+                suggestedTiles.Add(new BoardTile(
+                    gameMesh[finalID].pos_x, gameMesh[finalID].pos_y
+                    ));
+            }
+            return suggestedTiles;
+
+        }
+
     }
 }
