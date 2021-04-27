@@ -69,6 +69,14 @@ namespace NI_Fonakolos_játék
             new_game.Show();
             this.Close();
         }
+		
+		private void high_score_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ScoreBoard scoreboard = new ScoreBoard();
+            scoreboard.Show();
+            this.Close();
+        
+        }
 
         private void game_board_MouseDown(object sender, MouseButtonEventArgs e)
         {

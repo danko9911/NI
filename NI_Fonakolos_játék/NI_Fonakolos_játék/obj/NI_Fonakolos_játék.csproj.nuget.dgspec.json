@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\septe\\Documents\\GitHub\\Reversi\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj": {}
+    "C:\\Users\\septe\\Documents\\GitHub\\NI\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj": {}
   },
   "projects": {
-    "C:\\Users\\septe\\Documents\\GitHub\\Reversi\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj": {
+    "C:\\Users\\septe\\Documents\\GitHub\\NI\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\septe\\Documents\\GitHub\\Reversi\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj",
+        "projectUniqueName": "C:\\Users\\septe\\Documents\\GitHub\\NI\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj",
         "projectName": "NI_Fonakolos_játék",
-        "projectPath": "C:\\Users\\septe\\Documents\\GitHub\\Reversi\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj",
+        "projectPath": "C:\\Users\\septe\\Documents\\GitHub\\NI\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj",
         "packagesPath": "C:\\Users\\septe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\septe\\Documents\\GitHub\\Reversi\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\obj\\",
+        "outputPath": "C:\\Users\\septe\\Documents\\GitHub\\NI\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

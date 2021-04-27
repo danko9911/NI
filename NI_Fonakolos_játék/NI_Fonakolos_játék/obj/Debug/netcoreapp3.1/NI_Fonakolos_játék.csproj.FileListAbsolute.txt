@@ -44,3 +44,5 @@ C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj
 C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_Fonakolos_játék.dll
 C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_Fonakolos_játék.pdb
 C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_Fonakolos_játék.genruntimeconfig.cache
+C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\ScoreBoard.g.cs
+C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\ScoreBoard.baml
