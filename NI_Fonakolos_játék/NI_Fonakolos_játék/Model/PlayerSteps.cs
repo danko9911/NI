@@ -8,29 +8,80 @@ namespace NI_Fonakolos_játék.Model
     {
 
         public List<BoardTile> tileList = new List<BoardTile>();
-        int calcualtedID = -1;
+
+        
 
         public PlayerSteps(List<BoardTile> tileList)
         {
             this.tileList = tileList;
         }
 
-        public int suggestedStep(int selectedID, Directions selectedDir)
+        public void suggestedStep(int selectedID, Directions selectedDir)
         {
-            int tileOwner = tileList[selectedID + directionInT(selectedDir)].field_owner;
 
-            if (tileOwner == tileList[selectedID].field_owner%2 + 1)
+            
+            int calcualtedID = -1;
+            List<int> oppositeIDs = new List<int>();
+            bool endOfTable = true;
+
+            try
             {
+               int player = tileList[selectedID].field_owner;
 
-                
+                while (endOfTable)
+                {
+
+                    if (tileList[selectedID + directionInT(selectedDir)].field_owner != player )
+                    {
+
+                        selectedID += directionInT(selectedDir);
+                        calcualtedID = selectedID;
+                        oppositeIDs.Add(selectedID);
+
+                    }
+
+                    else if (tileList[selectedID + directionInT(selectedDir)].field_owner == player)
+                    {
+                        if (calcualtedID != -1)
+                        {
+                            foreach (int tiles in oppositeIDs)
+                            {
+                                tileList[tiles].field_owner = player;
+
+
+                            }
+                            endOfTable = false;
+                        }
+                        else
+                        {
+                            selectedID += directionInT(selectedDir);
+                            calcualtedID = selectedID;
+                        }
+                    }
+                    if (tileList[selectedID + directionInT(selectedDir)].field_owner != 1 && tileList[selectedID + directionInT(selectedDir)].field_owner != 2)
+                    {
+                        endOfTable = false;
+                        //TODO: A lépéskényszert itt kel kialakítani!
+                        /*if (calcualtedID != -1 && player != tileList[selectedID].field_owner)
+                        {
+                            tileList[selectedID + directionInT(selectedDir)].field_owner = player % 2 + 3;
+                        }*/
+                    }
+
+
+                }
             }
-            else if (tileOwner == tileList[selectedID].field_owner)
+
+            catch (ArgumentOutOfRangeException e)
             {
-
+                //DoNothing
             }
+        }
 
-            return calcualtedID;
+            public List<BoardTile> finalTiles()
+        {
 
+            return tileList;
         }
 
 

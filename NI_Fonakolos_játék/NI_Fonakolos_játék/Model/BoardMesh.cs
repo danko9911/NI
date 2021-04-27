@@ -65,25 +65,25 @@ namespace NI_Fonakolos_játék.Model
 
                 id++;
             }
-
             return id;
         }
 
-        public List<BoardTile> calcualteNextStep(int id)
+        public void calcualteNextStep(int id)
         {
-            List<BoardTile> suggestedTiles = new List<BoardTile>();
             PlayerSteps newStep = new PlayerSteps(gameMesh);
 
             foreach (PlayerSteps.Directions dir in (PlayerSteps.Directions[])Enum.GetValues(typeof(PlayerSteps.Directions)))
             {
-                int finalID = newStep.suggestedStep(id, dir);
-                suggestedTiles.Add(new BoardTile(
-                    gameMesh[finalID].pos_x, gameMesh[finalID].pos_y
-                    ));
+
+                newStep.suggestedStep(id , dir);
+
             }
-            return suggestedTiles;
+            gameMesh = newStep.finalTiles();
+
+            
 
         }
+
 
     }
 }

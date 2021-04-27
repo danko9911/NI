@@ -32,9 +32,11 @@ namespace NI_Fonakolos_játék
 
         public void drawBoard()
         {
+            int id = 0;
+            game_board.Children.Clear();
             foreach (Model.BoardTile tile in game.gameMesh)
             {
-                Ellipse myEllipse = new Ellipse();               
+                Ellipse myEllipse = new Ellipse();
                 myEllipse.Width = 65;
                 myEllipse.Height = 65;
                 Canvas.SetLeft(myEllipse, tile.pos_x);
@@ -45,9 +47,12 @@ namespace NI_Fonakolos_játék
                 {
                     case 1: myEllipse.Fill = System.Windows.Media.Brushes.White; break;
                     case 2: myEllipse.Fill = System.Windows.Media.Brushes.Black; break;
+                    case 3: myEllipse.Fill = System.Windows.Media.Brushes.Yellow; break;
+                    case 4: myEllipse.Fill = System.Windows.Media.Brushes.Orange; break;
                 }
 
                 game_board.Children.Add(myEllipse);
+                id++;
             }
         }
         
@@ -68,10 +73,15 @@ namespace NI_Fonakolos_játék
         private void game_board_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Point p = e.GetPosition(this);
+            int newID = game.calculateMousePosition(p.X, p.Y);
+            if (game.gameMesh[newID].field_owner != 1 && game.gameMesh[newID].field_owner != 2)
+            {
+                game.gameMesh[newID].field_owner = playerTurn + 1;
+                game.calcualteNextStep(newID);
+                drawBoard();
+                playerTurn = (playerTurn + 1) % 2;
+            }
             
-            game.gameMesh[game.calculateMousePosition(p.X, p.Y)].field_owner = playerTurn + 1;
-            drawBoard();
-            playerTurn = (playerTurn + 1) % 2;
         }
 
         
