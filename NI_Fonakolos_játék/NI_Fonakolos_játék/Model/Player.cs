@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,14 +14,10 @@ namespace NI_Fonakolos_játék.Model
 
         public int Score { get; set; }
 
-        public string FullName
-        {
-            get
-            {
-                return $"{firstName}{lastName}";
-            }
-        }
+        public string FullName => firstName + " " +lastName;
 
     }
 }
+
+
 
