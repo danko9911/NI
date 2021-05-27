@@ -30,8 +30,14 @@ namespace NI_Fonakolos_játék.Model
 
                 while (endOfTable)
                 {
+                    if((selectedID+1)%8 == 0 && (selectedDir == Directions.DOWN || selectedDir == Directions.DOWNLEFT || selectedDir == Directions.DOWNRIGHT) ||
+                       (selectedID) % 8 == 0 && (selectedDir == Directions.UP || selectedDir == Directions.UPLEFT || selectedDir == Directions.UPRIGHT))
+                    {
+                        endOfTable = false;
+                    }
+                    
 
-                    if (tileList[selectedID + directionInT(selectedDir)].field_owner != player )
+                    if (tileList[selectedID + directionInT(selectedDir)].field_owner == (player % 2) +1 )
                     {
 
                         selectedID += directionInT(selectedDir);
@@ -61,11 +67,8 @@ namespace NI_Fonakolos_játék.Model
                     if (tileList[selectedID + directionInT(selectedDir)].field_owner != 1 && tileList[selectedID + directionInT(selectedDir)].field_owner != 2)
                     {
                         endOfTable = false;
-                        //TODO: A lépéskényszert itt kel kialakítani!
-                        /*if (calcualtedID != -1 && player != tileList[selectedID].field_owner)
-                        {
-                            tileList[selectedID + directionInT(selectedDir)].field_owner = player % 2 + 3;
-                        }*/
+                        //TODO: A lépéskényszert itt kell kialakítani!
+
                     }
 
 
