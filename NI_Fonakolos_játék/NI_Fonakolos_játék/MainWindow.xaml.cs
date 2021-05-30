@@ -47,8 +47,8 @@ namespace NI_Fonakolos_játék
                 {
                     case 1: myEllipse.Fill = System.Windows.Media.Brushes.White; break;
                     case 2: myEllipse.Fill = System.Windows.Media.Brushes.Black; break;
-                    case 3: myEllipse.Fill = System.Windows.Media.Brushes.Yellow; break;
-                    case 4: myEllipse.Fill = System.Windows.Media.Brushes.Orange; break;
+                    case 3: if(playerTurn == 0) myEllipse.Fill = System.Windows.Media.Brushes.Yellow; break;
+                    case 4: if (playerTurn == 1) myEllipse.Fill = System.Windows.Media.Brushes.Orange; break;
                 }
 
                 game_board.Children.Add(myEllipse);
@@ -82,12 +82,13 @@ namespace NI_Fonakolos_játék
         {
             Point p = e.GetPosition(this);
             int newID = game.calculateMousePosition(p.X, p.Y);
-            if (game.gameMesh[newID].field_owner != 1 && game.gameMesh[newID].field_owner != 2)
+            if (game.gameMesh[newID].field_owner == playerTurn + 3)
             {
                 game.gameMesh[newID].field_owner = playerTurn + 1;
-                game.calcualteNextStep(newID);
-                drawBoard();
+                game.gameStep(newID);
                 playerTurn = (playerTurn + 1) % 2;
+                drawBoard();
+                
             }
             
         }

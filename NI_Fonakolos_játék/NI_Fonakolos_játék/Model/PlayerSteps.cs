@@ -16,7 +16,7 @@ namespace NI_Fonakolos_játék.Model
             this.tileList = tileList;
         }
 
-        public void suggestedStep(int selectedID, Directions selectedDir)
+        public void nextStep(int selectedID, Directions selectedDir)
         {
 
             
@@ -64,14 +64,64 @@ namespace NI_Fonakolos_játék.Model
                             calcualtedID = selectedID;
                         }
                     }
-                    if (tileList[selectedID + directionInT(selectedDir)].field_owner != 1 && tileList[selectedID + directionInT(selectedDir)].field_owner != 2)
+                    else if (tileList[selectedID + directionInT(selectedDir)].field_owner != 1 && tileList[selectedID + directionInT(selectedDir)].field_owner != 2)
                     {
                         endOfTable = false;
-                        //TODO: A lépéskényszert itt kell kialakítani!
+                        
 
                     }
 
 
+                }
+            }
+
+            catch (ArgumentOutOfRangeException e)
+            {
+                //DoNothing
+            }
+        }
+
+        public void suggestedStep(int selectedID, Directions selectedDir)
+        {
+            try {
+                bool endOfTable = true;
+                bool moved = false;
+                int player = tileList[selectedID].field_owner;
+
+                while (endOfTable)
+                {
+                    if ((selectedID + 1) % 8 == 0 && (selectedDir == Directions.DOWN || selectedDir == Directions.DOWNLEFT || selectedDir == Directions.DOWNRIGHT) ||
+                           (selectedID) % 8 == 0 && (selectedDir == Directions.UP || selectedDir == Directions.UPLEFT || selectedDir == Directions.UPRIGHT) )
+                    {
+                        endOfTable = false;
+                    }
+
+                    else if (tileList[selectedID + directionInT(selectedDir)].field_owner == 0)
+                    {
+                        if (moved)
+                        {
+                            tileList[selectedID + directionInT(selectedDir)].field_owner = player + 2;
+                            //throw new Exception();
+                        }
+
+                        endOfTable = false;
+
+                    }
+
+                    else if (tileList[selectedID + directionInT(selectedDir)].field_owner == (player % 2) + 1)
+                    {
+
+                        moved = true;
+                    }
+
+                    else
+                    {
+                        endOfTable = false;
+                    }
+
+                    selectedID += directionInT(selectedDir);
+
+                    
                 }
             }
 
