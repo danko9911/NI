@@ -41,6 +41,7 @@ namespace NI_Fonakolos_játék.Model
             gameMesh[36].field_owner = 1;
             gameMesh[35].field_owner = 2;
             gameMesh[28].field_owner = 2;
+            calcualteNextStep();
         }
 
         public int calculateMousePosition(double x, double y)
@@ -68,20 +69,53 @@ namespace NI_Fonakolos_játék.Model
             return id;
         }
 
-        public void calcualteNextStep(int id, int player)
+        public void gameStep(int new_id)
         {
             PlayerSteps newStep = new PlayerSteps(gameMesh);
 
             foreach (PlayerSteps.Directions dir in (PlayerSteps.Directions[])Enum.GetValues(typeof(PlayerSteps.Directions)))
             {
 
-                newStep.suggestedStep(id , dir, player);
+                newStep.nextStep(new_id, dir);
 
             }
+
             gameMesh = newStep.finalTiles();
 
-            
+            calcualteNextStep();
+        }
 
+        public void calcualteNextStep()
+        {
+            PlayerSteps newStep = new PlayerSteps(gameMesh);
+            int testid = 0;
+
+            foreach (BoardTile tiles in gameMesh)
+            {
+                if(tiles.field_owner == 3 || tiles.field_owner == 4)
+                {
+                    tiles.field_owner = 0;
+                }
+
+                testid++;
+            }
+
+            testid = 0;
+
+            foreach (BoardTile tiles in gameMesh)
+            {
+                if (tiles.field_owner == 1 || tiles.field_owner == 2)
+                {
+                    foreach (PlayerSteps.Directions dir in (PlayerSteps.Directions[])Enum.GetValues(typeof(PlayerSteps.Directions)))
+                    {
+
+                        newStep.suggestedStep(testid, dir);
+
+                    }
+                }
+                testid++;
+            }
+            gameMesh = newStep.finalTiles();
         }
 
 
