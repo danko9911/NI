@@ -68,14 +68,14 @@ namespace NI_Fonakolos_játék.Model
             return id;
         }
 
-        public void calcualteNextStep(int id)
+        public void calcualteNextStep(int id, int player)
         {
             PlayerSteps newStep = new PlayerSteps(gameMesh);
 
             foreach (PlayerSteps.Directions dir in (PlayerSteps.Directions[])Enum.GetValues(typeof(PlayerSteps.Directions)))
             {
 
-                newStep.suggestedStep(id , dir);
+                newStep.suggestedStep(id , dir, player);
 
             }
             gameMesh = newStep.finalTiles();

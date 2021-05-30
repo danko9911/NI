@@ -84,10 +84,12 @@ namespace NI_Fonakolos_játék
             int newID = game.calculateMousePosition(p.X, p.Y);
             if (game.gameMesh[newID].field_owner != 1 && game.gameMesh[newID].field_owner != 2)
             {
-                game.gameMesh[newID].field_owner = playerTurn + 1;
-                game.calcualteNextStep(newID);
+                //game.gameMesh[newID].field_owner = playerTurn + 1;
+                game.calcualteNextStep(newID, playerTurn + 1);
                 drawBoard();
                 playerTurn = (playerTurn + 1) % 2;
+                
+              
             }
             
         }

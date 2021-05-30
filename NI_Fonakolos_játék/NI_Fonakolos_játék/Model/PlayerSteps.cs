@@ -16,7 +16,7 @@ namespace NI_Fonakolos_játék.Model
             this.tileList = tileList;
         }
 
-        public void suggestedStep(int selectedID, Directions selectedDir)
+        public void suggestedStep(int selectedID, Directions selectedDir, int player)
         {
 
             
@@ -26,12 +26,16 @@ namespace NI_Fonakolos_játék.Model
 
             try
             {
-               int player = tileList[selectedID].field_owner;
+                //int player = tileList[selectedID].field_owner;
+
+                oppositeIDs.Add(selectedID);
 
                 while (endOfTable)
                 {
                     if((selectedID+1)%8 == 0 && (selectedDir == Directions.DOWN || selectedDir == Directions.DOWNLEFT || selectedDir == Directions.DOWNRIGHT) ||
-                       (selectedID) % 8 == 0 && (selectedDir == Directions.UP || selectedDir == Directions.UPLEFT || selectedDir == Directions.UPRIGHT))
+                       (selectedID) % 8 == 0 && (selectedDir == Directions.UP || selectedDir == Directions.UPLEFT || selectedDir == Directions.UPRIGHT) ||
+                       (selectedID < 8) && (selectedDir == Directions.LEFT || selectedDir == Directions.UPLEFT || selectedDir == Directions.DOWNLEFT) ||
+                       (selectedID > 55) && (selectedDir == Directions.RIGHT || selectedDir == Directions.DOWNRIGHT || selectedDir == Directions.UPRIGHT))
                     {
                         endOfTable = false;
                     }
@@ -56,13 +60,9 @@ namespace NI_Fonakolos_játék.Model
 
 
                             }
-                            endOfTable = false;
+                            
                         }
-                        else
-                        {
-                            selectedID += directionInT(selectedDir);
-                            calcualtedID = selectedID;
-                        }
+                        endOfTable = false;
                     }
                     if (tileList[selectedID + directionInT(selectedDir)].field_owner != 1 && tileList[selectedID + directionInT(selectedDir)].field_owner != 2)
                     {
