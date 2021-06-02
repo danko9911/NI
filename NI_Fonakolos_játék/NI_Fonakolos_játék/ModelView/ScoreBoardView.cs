@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-//using System.Data.SQLite;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +13,7 @@ namespace NI_Fonakolos_játék.ModelView
 {
     class ScoreBoardView
     {
-       /* public static List<Player> LoadPeople()
+       public static List<Player> LoadPeople()
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
@@ -27,7 +27,7 @@ namespace NI_Fonakolos_játék.ModelView
         /// Saving the Person to the database.
         /// </summary>
         /// <param name="player"></param>
-        public static void SavePerson(Player player)
+        public static void SavePlayer(Player player)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
@@ -38,6 +38,6 @@ namespace NI_Fonakolos_játék.ModelView
         private static string LoadConnectionString(string id = "Default")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
-        }*/
+        }
     }
 }

@@ -20,10 +20,16 @@ namespace NI_Fonakolos_játék
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool isAgainstAI = false;
+        public string p1_firstname { get; set; }
+        public string p1_lastname { get; set; }
+        public string p2_firstname { get; set; }
+        public string p2_lastname { get; set; }
+
         public int playerTurn; //white = 0 / black = 1
         Model.BoardMesh game = new Model.BoardMesh();
         
-        public MainWindow()
+        public MainWindow(object mw)
         {
             InitializeComponent();
             drawBoard();
