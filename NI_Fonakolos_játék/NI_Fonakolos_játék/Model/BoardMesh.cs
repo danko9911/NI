@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace NI_Fonakolos_játék.Model
 {
@@ -11,9 +12,14 @@ namespace NI_Fonakolos_játék.Model
     {
         public List<BoardTile> gameMesh = new List<BoardTile>();
 
+        public Dictionary<int, List<BoardTile>> storedState = new Dictionary<int, List<BoardTile>>();
+
+        public int rounds;
+
         public BoardMesh()
         {
             createTable();
+            this.rounds = 0;
         }
 
         public void createTable()
@@ -71,6 +77,8 @@ namespace NI_Fonakolos_játék.Model
 
         public void gameStep(int new_id)
         {
+            setStoredState();
+            
             PlayerSteps newStep = new PlayerSteps(gameMesh);
 
             foreach (PlayerSteps.Directions dir in (PlayerSteps.Directions[])Enum.GetValues(typeof(PlayerSteps.Directions)))
@@ -83,6 +91,7 @@ namespace NI_Fonakolos_játék.Model
             gameMesh = newStep.finalTiles();
 
             calcualteNextStep();
+            rounds++;
         }
 
         public void calcualteNextStep()
@@ -116,6 +125,15 @@ namespace NI_Fonakolos_játék.Model
                 testid++;
             }
             gameMesh = newStep.finalTiles();
+        }
+
+        private void setStoredState()
+        {
+            if(storedState.Count > 5)
+            {
+                storedState.Remove(storedState.Keys.Min());
+            }
+            storedState.Add(rounds, gameMesh);
         }
 
 
