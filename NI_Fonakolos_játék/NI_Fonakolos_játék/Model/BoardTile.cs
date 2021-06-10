@@ -22,8 +22,6 @@ namespace NI_Fonakolos_játék.Model
             field_owner = 0;
         }
 
-        public BoardTile() { }
-
         public Point getPosition()
         {
             return new Point(pos_x, pos_y);

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace NI_Fonakolos_játék
 {
@@ -50,7 +51,7 @@ namespace NI_Fonakolos_játék
             player2.Score = 0;
 
             game_board.Children.Clear();
-            foreach (Model.BoardTile tile in game.gameMesh)
+            foreach (BoardTile tile in game.gameMesh)
             {
                 Ellipse myEllipse = new Ellipse();
                 myEllipse.Width = 65;
@@ -63,8 +64,8 @@ namespace NI_Fonakolos_játék
                 {
                     case 1: myEllipse.Fill = Brushes.White; player1.Score++;  break;
                     case 2: myEllipse.Fill = Brushes.Black; player2.Score++; break;
-                    case 3: if(playerTurn == 0) myEllipse.Fill = Brushes.Red; endGame = false; break;
-                    case 4: if (playerTurn == 1) myEllipse.Fill = Brushes.Orange; endGame = false; break;
+                    case 3: if (playerTurn == 0) { myEllipse.Fill = Brushes.Red; endGame = false; } break;
+                    case 4: if (playerTurn == 1) { myEllipse.Fill = Brushes.Orange; endGame = false; } break;
                 }
 
                 game_board.Children.Add(myEllipse);
@@ -76,7 +77,6 @@ namespace NI_Fonakolos_játék
 
             if (endGame)
             {
-                throw new Exception();
                 endGameTitle();
             }
 
@@ -130,9 +130,8 @@ namespace NI_Fonakolos_játék
                 }
             }
 
-            catch (ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException )
             {
-
             }
             
         }
@@ -185,10 +184,6 @@ namespace NI_Fonakolos_játék
 
         private void LastStateButton_Click(object sender, RoutedEventArgs e)
         {
-            game.gameMesh = game.storedState.Values.Last();
-            MessageBox.Show(game.storedState.Keys.Last().ToString());
-            game.storedState.Remove(game.rounds);          
-            game.rounds--;
             drawBoard();
         }
     }

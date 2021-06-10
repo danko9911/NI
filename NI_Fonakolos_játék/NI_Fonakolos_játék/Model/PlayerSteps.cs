@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
 
 namespace NI_Fonakolos_játék.Model
 {
     class PlayerSteps
     {
 
-        public List<BoardTile> tileList = new List<BoardTile>();
+        private List<BoardTile> tileList = new List<BoardTile>();
 
         
 
-        public PlayerSteps(List<BoardTile> tileList)
+        public PlayerSteps(List<BoardTile> initTileList)
         {
-            this.tileList = tileList;
+            foreach(var tiles in initTileList)
+            {
+                tileList.Add(tiles);
+            }
         }
 
         public void nextStep(int selectedID, Directions selectedDir)
@@ -30,8 +34,10 @@ namespace NI_Fonakolos_játék.Model
 
                 while (endOfTable)
                 {
-                    if((selectedID+1)%8 == 0 && (selectedDir == Directions.DOWN || selectedDir == Directions.DOWNLEFT || selectedDir == Directions.DOWNRIGHT) ||
-                       (selectedID) % 8 == 0 && (selectedDir == Directions.UP || selectedDir == Directions.UPLEFT || selectedDir == Directions.UPRIGHT))
+                    if(((selectedID+1)%8 == 0 && (selectedDir == Directions.DOWN || selectedDir == Directions.DOWNLEFT || selectedDir == Directions.DOWNRIGHT)) ||
+                       (selectedID % 8 == 0 && (selectedDir == Directions.UP || selectedDir == Directions.UPLEFT || selectedDir == Directions.UPRIGHT)) ||
+                       (selectedID > 55 && (selectedDir == Directions.RIGHT || selectedDir == Directions.DOWNRIGHT || selectedDir == Directions.UPRIGHT)) ||
+                           (selectedID < 8 && (selectedDir == Directions.LEFT || selectedDir == Directions.DOWNLEFT || selectedDir == Directions.UPLEFT)))
                     {
                         endOfTable = false;
                     }
@@ -43,6 +49,10 @@ namespace NI_Fonakolos_játék.Model
                         selectedID += directionInT(selectedDir);
                         calcualtedID = selectedID;
                         oppositeIDs.Add(selectedID);
+                        if (selectedID < 55 || selectedID % 7 == 0)
+                        {
+                            endOfTable = false;
+                        }
 
                     }
 
@@ -77,7 +87,7 @@ namespace NI_Fonakolos_játék.Model
 
             catch (ArgumentOutOfRangeException e)
             {
-                //DoNothing
+
             }
         }
 
@@ -90,8 +100,10 @@ namespace NI_Fonakolos_játék.Model
 
                 while (endOfTable)
                 {
-                    if ((selectedID + 1) % 8 == 0 && (selectedDir == Directions.DOWN || selectedDir == Directions.DOWNLEFT || selectedDir == Directions.DOWNRIGHT) ||
-                           (selectedID) % 8 == 0 && (selectedDir == Directions.UP || selectedDir == Directions.UPLEFT || selectedDir == Directions.UPRIGHT) )
+                    if (((selectedID + 1) % 8 == 0 && (selectedDir == Directions.DOWN || selectedDir == Directions.DOWNLEFT || selectedDir == Directions.DOWNRIGHT)) ||
+                           (selectedID % 8 == 0 && (selectedDir == Directions.UP || selectedDir == Directions.UPLEFT || selectedDir == Directions.UPRIGHT)) ||
+                           (selectedID > 55 && (selectedDir == Directions.RIGHT || selectedDir == Directions.DOWNRIGHT || selectedDir == Directions.UPRIGHT)) ||
+                           (selectedID < 8 && (selectedDir == Directions.LEFT || selectedDir == Directions.DOWNLEFT || selectedDir == Directions.UPLEFT)))
                     {
                         endOfTable = false;
                     }
@@ -121,20 +133,18 @@ namespace NI_Fonakolos_játék.Model
 
                     selectedID += directionInT(selectedDir);
 
-                    
+
                 }
             }
 
             catch (ArgumentOutOfRangeException e)
             {
-                //DoNothing
             }
         }
 
-            public List<BoardTile> finalTiles()
+        public void replaceList(List<BoardTile> initList)
         {
-
-            return tileList;
+            tileList = initList;
         }
 
 
