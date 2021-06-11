@@ -71,3 +71,12 @@ C:\Users\danie\OneDrive\Dokumentumok\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos
 C:\Users\danie\OneDrive\Dokumentumok\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_Fonakolos_játék.dll
 C:\Users\danie\OneDrive\Dokumentumok\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_Fonakolos_játék.pdb
 C:\Users\danie\OneDrive\Dokumentumok\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_Fonakolos_játék.genruntimeconfig.cache
+W:\SFM\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_Fonakolos_játék.csprojAssemblyReference.cache
+W:\SFM\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+W:\SFM\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NewGameWindow.g.cs
+W:\SFM\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\ScoreBoard.g.cs
+W:\SFM\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\App.g.cs
+W:\SFM\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_Fonakolos_játék_MarkupCompile.cache
+W:\SFM\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_Fonakolos_játék_MarkupCompile.lref
+W:\SFM\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_Fonakolos_játék.dll
+W:\SFM\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_Fonakolos_játék.pdb

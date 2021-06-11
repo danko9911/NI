@@ -1,4 +1,5 @@
 using NI_Fonakolos_játék.Model;
+using NI_Fonakolos_játék;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,10 +12,12 @@ using System.Threading.Tasks;
 
 namespace NI_Fonakolos_játék.ModelView
 {
+    ScoreBoardDB cnn;
     class ScoreBoardView
     {
-       public static List<Player> LoadPeople()
+        public static List<Player> LoadPeople()
         {
+    
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 var output = cnn.Query<Player>("select * from Player", new DynamicParameters());
