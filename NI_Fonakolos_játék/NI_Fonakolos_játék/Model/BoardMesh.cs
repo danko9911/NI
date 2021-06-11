@@ -83,6 +83,14 @@ namespace NI_Fonakolos_játék.Model
                 newStep.nextStep(new_id, dir);
 
             }
+
+            gameMesh.Clear();
+            foreach(var tiles in newStep.getBoard())
+            {
+                BoardTile initTile = new BoardTile(tiles);
+                gameMesh.Add(initTile);
+            }
+
             calcualteNextStep();
         }
 
@@ -94,7 +102,7 @@ namespace NI_Fonakolos_játék.Model
 
             foreach (BoardTile tiles in gameMesh)
             {
-                if(tiles.field_owner == 3 || tiles.field_owner == 4)
+                if (tiles.field_owner == 3 || tiles.field_owner == 4 || tiles.field_owner == 5)
                 {
                     tiles.field_owner = 0;
                 }
@@ -116,6 +124,13 @@ namespace NI_Fonakolos_játék.Model
                     }
                 }
                 tileid++;
+            }
+
+            gameMesh.Clear();
+            foreach (var tiles in newStep.getBoard())
+            {
+                BoardTile initTile = new BoardTile(tiles);
+                gameMesh.Add(initTile);
             }
 
         }

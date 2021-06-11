@@ -22,6 +22,13 @@ namespace NI_Fonakolos_játék.Model
             field_owner = 0;
         }
 
+        public BoardTile( BoardTile copyTo) {
+
+            this.pos_x = copyTo.pos_x;
+            this.pos_y = copyTo.pos_y;
+            this.field_owner = copyTo.field_owner;
+        }
+
         public Point getPosition()
         {
             return new Point(pos_x, pos_y);

@@ -16,7 +16,8 @@ namespace NI_Fonakolos_játék.Model
         {
             foreach(var tiles in initTileList)
             {
-                tileList.Add(tiles);
+                BoardTile initTile = new BoardTile(tiles);
+                tileList.Add(initTile);
             }
         }
 
@@ -49,10 +50,6 @@ namespace NI_Fonakolos_játék.Model
                         selectedID += directionInT(selectedDir);
                         calcualtedID = selectedID;
                         oppositeIDs.Add(selectedID);
-                        if (selectedID < 55 || selectedID % 7 == 0)
-                        {
-                            endOfTable = false;
-                        }
 
                     }
 
@@ -97,6 +94,7 @@ namespace NI_Fonakolos_játék.Model
                 bool endOfTable = true;
                 bool moved = false;
                 int player = tileList[selectedID].field_owner;
+                int opponent = (tileList[selectedID].field_owner %2) + 1  ; 
 
                 while (endOfTable)
                 {
@@ -112,6 +110,7 @@ namespace NI_Fonakolos_játék.Model
                     {
                         if (moved)
                         {
+
                             tileList[selectedID + directionInT(selectedDir)].field_owner = player + 2;
                             //throw new Exception();
                         }
@@ -119,8 +118,16 @@ namespace NI_Fonakolos_játék.Model
                         endOfTable = false;
 
                     }
+                    /*else if (tileList[selectedID + directionInT(selectedDir)].field_owner == opponent + 2)
+                        {
+                        if (moved)
+                        {
+                            tileList[selectedID + directionInT(selectedDir)].field_owner = 5;
+                        }
+                            
+                        }*/
 
-                    else if (tileList[selectedID + directionInT(selectedDir)].field_owner == (player % 2) + 1)
+                    else if (tileList[selectedID + directionInT(selectedDir)].field_owner == opponent)
                     {
 
                         moved = true;
@@ -142,9 +149,9 @@ namespace NI_Fonakolos_játék.Model
             }
         }
 
-        public void replaceList(List<BoardTile> initList)
+        public List<BoardTile> getBoard()
         {
-            tileList = initList;
+            return tileList;
         }
 
 

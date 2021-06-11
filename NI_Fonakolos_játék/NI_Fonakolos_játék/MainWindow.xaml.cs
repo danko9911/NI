@@ -66,6 +66,7 @@ namespace NI_Fonakolos_játék
                     case 2: myEllipse.Fill = Brushes.Black; player2.Score++; break;
                     case 3: if (playerTurn == 0) { myEllipse.Fill = Brushes.Red; endGame = false; } break;
                     case 4: if (playerTurn == 1) { myEllipse.Fill = Brushes.Orange; endGame = false; } break;
+                    case 5: if (playerTurn == 1) { myEllipse.Fill = Brushes.Orange; endGame = false; } else if (playerTurn == 0) { myEllipse.Fill = Brushes.Red; endGame = false; } break;
                 }
 
                 game_board.Children.Add(myEllipse);
@@ -119,7 +120,7 @@ namespace NI_Fonakolos_játék
             try
             {
                 int newID = game.calculateMousePosition(p.X, p.Y);
-                if (game.gameMesh[newID].field_owner == playerTurn + 3)
+                if (game.gameMesh[newID].field_owner == playerTurn + 3 || game.gameMesh[newID].field_owner == 5)
                 {
                     game.gameMesh[newID].field_owner = playerTurn + 1;
                     game.gameStep(newID);
