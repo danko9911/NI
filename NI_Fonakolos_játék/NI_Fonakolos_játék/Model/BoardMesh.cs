@@ -96,8 +96,6 @@ namespace NI_Fonakolos_játék.Model
 
         public void calcualteNextStep()
         {
-
-            PlayerSteps newStep = new PlayerSteps(gameMesh);
             int tileid = 0;
 
             foreach (BoardTile tiles in gameMesh)
@@ -109,6 +107,11 @@ namespace NI_Fonakolos_játék.Model
 
                 tileid++;
             }
+
+            PlayerSteps newStep = new PlayerSteps(gameMesh);
+            
+
+            
 
             tileid = 0;
 

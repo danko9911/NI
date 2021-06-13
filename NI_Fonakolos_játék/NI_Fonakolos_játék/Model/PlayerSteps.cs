@@ -94,7 +94,7 @@ namespace NI_Fonakolos_játék.Model
                 bool endOfTable = true;
                 bool moved = false;
                 int player = tileList[selectedID].field_owner;
-                int opponent = (tileList[selectedID].field_owner %2) + 1  ; 
+                int opponent = (tileList[selectedID].field_owner %2) + 1; 
 
                 while (endOfTable)
                 {
@@ -118,28 +118,33 @@ namespace NI_Fonakolos_játék.Model
                         endOfTable = false;
 
                     }
-                    /*else if (tileList[selectedID + directionInT(selectedDir)].field_owner == opponent + 2)
-                        {
-                        if (moved)
-                        {
-                            tileList[selectedID + directionInT(selectedDir)].field_owner = 5;
-                        }
-                            
-                        }*/
 
                     else if (tileList[selectedID + directionInT(selectedDir)].field_owner == opponent)
                     {
 
                         moved = true;
+                        
                     }
 
-                    else
+                    else if (tileList[selectedID + directionInT(selectedDir)].field_owner == player)
+                    {
+                        endOfTable = false;
+                    }
+
+                    else if (tileList[selectedID + directionInT(selectedDir)].field_owner == opponent + 2)
+                    {
+                        if (moved)
+                        {
+                            tileList[selectedID + directionInT(selectedDir)].field_owner = 5;
+                            endOfTable = false;
+                        }
+                    }
+                    else if(tileList[selectedID + directionInT(selectedDir)].field_owner > 2)
                     {
                         endOfTable = false;
                     }
 
                     selectedID += directionInT(selectedDir);
-
 
                 }
             }
