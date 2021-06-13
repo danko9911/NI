@@ -18,5 +18,8 @@
     <Page Update="NewGameWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="ScoreBoard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>

@@ -29,7 +29,7 @@ namespace NI_Fonakolos_játék
         public int playerTurn; //white = 0 / black = 1
         Model.BoardMesh game = new Model.BoardMesh();
         
-        public MainWindow(object mw)
+        public MainWindow(object mw, bool v, string p1)
         {
             InitializeComponent();
             drawBoard();

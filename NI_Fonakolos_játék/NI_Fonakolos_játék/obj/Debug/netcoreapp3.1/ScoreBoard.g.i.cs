@@ -85,7 +85,7 @@ namespace NI_Fonakolos_játék {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/NI_Fonakolos_játék;component/scoreboard.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/NI_Fonakolos_játék;V1.0.0.0;component/scoreboard.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ScoreBoard.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

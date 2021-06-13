@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace NI_Fonakolos_játék.ModelView
 {
-    ScoreBoardDB cnn;
+  
     class ScoreBoardView
     {
         public static List<Player> LoadPeople()
