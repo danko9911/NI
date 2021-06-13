@@ -164,32 +164,44 @@ namespace NI_Fonakolos_játék.Model
 
         }
 
-        public bool getLastState()
+        public bool getLastState(bool isAI)
         {
             
             if (LastState.Count != 0)
             {
+
                 gameMesh.Clear();
-                foreach (var tiles in LastState)
+                if (isAI)
                 {
-                    BoardTile initTile = new BoardTile(tiles);
-                    gameMesh.Add(initTile);
-                }
-
-                LastState.Clear();
-
-                if (SecondLastState.Count != 0)
-                {
+                    LastState.Clear();
                     foreach (var tiles in SecondLastState)
                     {
                         BoardTile initTile = new BoardTile(tiles);
-                        LastState.Add(initTile);
+                        gameMesh.Add(initTile);
                     }
-                    
+                    SecondLastState.Clear();
                 }
-                SecondLastState.Clear();
+                else
+                {
+                    foreach (var tiles in LastState)
+                    {
+                        BoardTile initTile = new BoardTile(tiles);
+                        gameMesh.Add(initTile);
+                    }
 
-                //calcualteNextStep();
+                    LastState.Clear();
+
+                    if (SecondLastState.Count != 0)
+                    {
+                        foreach (var tiles in SecondLastState)
+                        {
+                            BoardTile initTile = new BoardTile(tiles);
+                            LastState.Add(initTile);
+                        }
+
+                    }
+                    SecondLastState.Clear();
+                }
                 return true;
             }
 

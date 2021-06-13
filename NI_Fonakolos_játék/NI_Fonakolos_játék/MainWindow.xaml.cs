@@ -23,6 +23,7 @@ namespace NI_Fonakolos_játék
     public partial class MainWindow : Window
     {
         public int playerTurn; //white = 0 / black = 1
+        public bool isAI;
         BoardMesh game = new BoardMesh();
         Player player1 = new Player();
         Player player2 = new Player();
@@ -32,9 +33,11 @@ namespace NI_Fonakolos_játék
             InitializeComponent();
             Player1Text.Text = player1.firstName = player1Name;
 
-            if (isAi) { Player2Text.Text = player2.firstName = "AI"; }
+            if (isAi) { Player2Text.Text = player2.firstName = "AI";}
             else { Player2Text.Text = player2.firstName = player2Name; }
-            
+
+            this.isAI = isAi;
+
             playerTurn = RandomizeStartingPlayer();
             playerTurnColors(playerTurn);
 
@@ -181,9 +184,12 @@ namespace NI_Fonakolos_játék
 
         private void LastStateButton_Click(object sender, RoutedEventArgs e)
         {
-            if (game.getLastState())
+            if (game.getLastState(isAI))
             {
-                playerTurn = (playerTurn + 1) % 2;
+                if (!isAI)
+                {
+                   playerTurn = (playerTurn + 1) % 2;
+                }               
                 playerTurnColors(playerTurn);
                 drawBoard();
             }          
