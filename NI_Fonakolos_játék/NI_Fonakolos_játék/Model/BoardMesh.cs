@@ -13,6 +13,10 @@ namespace NI_Fonakolos_játék.Model
     {
         public List<BoardTile> gameMesh = new List<BoardTile>();
 
+        public List<BoardTile> LastState = new List<BoardTile>();
+        public List<BoardTile> SecondLastState = new List<BoardTile>();
+
+
         public BoardMesh()
         {
             createTable();
@@ -71,9 +75,11 @@ namespace NI_Fonakolos_játék.Model
             return id;
         }
 
-        public void gameStep(int new_id)
+        public void gameStep(int new_id, int player)
         {
+            setLastState();
 
+            gameMesh[new_id].field_owner = player;
 
             PlayerSteps newStep = new PlayerSteps(gameMesh);
 
@@ -90,7 +96,7 @@ namespace NI_Fonakolos_játék.Model
                 BoardTile initTile = new BoardTile(tiles);
                 gameMesh.Add(initTile);
             }
-
+            
             calcualteNextStep();
         }
 
@@ -109,9 +115,6 @@ namespace NI_Fonakolos_játék.Model
             }
 
             PlayerSteps newStep = new PlayerSteps(gameMesh);
-            
-
-            
 
             tileid = 0;
 
@@ -135,10 +138,62 @@ namespace NI_Fonakolos_játék.Model
                 BoardTile initTile = new BoardTile(tiles);
                 gameMesh.Add(initTile);
             }
+            
 
         }
 
+        private void setLastState()
+        {
+            SecondLastState.Clear();
+            if(LastState.Count != 0)
+            {
+                foreach(var tiles in LastState)
+                {
+                    BoardTile initTile = new BoardTile(tiles);
+                    SecondLastState.Add(initTile);
+                }
+               
+            }
+            LastState.Clear();
 
+            foreach (var tiles in gameMesh)
+            {
+                BoardTile initTile = new BoardTile(tiles);
+                LastState.Add(initTile);
+            }
 
+        }
+
+        public bool getLastState()
+        {
+            
+            if (LastState.Count != 0)
+            {
+                gameMesh.Clear();
+                foreach (var tiles in LastState)
+                {
+                    BoardTile initTile = new BoardTile(tiles);
+                    gameMesh.Add(initTile);
+                }
+
+                LastState.Clear();
+
+                if (SecondLastState.Count != 0)
+                {
+                    foreach (var tiles in SecondLastState)
+                    {
+                        BoardTile initTile = new BoardTile(tiles);
+                        LastState.Add(initTile);
+                    }
+                    
+                }
+                SecondLastState.Clear();
+
+                //calcualteNextStep();
+                return true;
+            }
+
+            return false;
+        }
     }
 }

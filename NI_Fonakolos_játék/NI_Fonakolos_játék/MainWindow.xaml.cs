@@ -81,11 +81,8 @@ namespace NI_Fonakolos_játék
                 endGameTitle();
             }
 
-            //Ez csúnya, majd INotifyPropertyChanged el meg elsz oldva
-            //----
             Player1Text.Text = player1.firstName + "\n" + player1.Score;
             Player2Text.Text = player2.firstName + "\n" + player2.Score;
-            //------
         }
 
 
@@ -122,8 +119,7 @@ namespace NI_Fonakolos_játék
                 int newID = game.calculateMousePosition(p.X, p.Y);
                 if (game.gameMesh[newID].field_owner == playerTurn + 3 || game.gameMesh[newID].field_owner == 5)
                 {
-                    game.gameMesh[newID].field_owner = playerTurn + 1;
-                    game.gameStep(newID);
+                    game.gameStep(newID, playerTurn + 1 );
                     playerTurn = (playerTurn + 1) % 2;
                     drawBoard();
 
@@ -185,7 +181,12 @@ namespace NI_Fonakolos_játék
 
         private void LastStateButton_Click(object sender, RoutedEventArgs e)
         {
-            drawBoard();
+            if (game.getLastState())
+            {
+                playerTurn = (playerTurn + 1) % 2;
+                playerTurnColors(playerTurn);
+                drawBoard();
+            }          
         }
     }
 
