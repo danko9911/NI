@@ -10,9 +10,6 @@
     <Compile Update="NewGameWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="ScoreBoard.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
