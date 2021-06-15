@@ -370,3 +370,7 @@ FodyWeavers.xsd
 *.tlog
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio
+
+!NI_Fonakolos_játék/NI_Fonakolos_játék/obj
+
+!NI_Fonakolos_játék/NI_Fonakolos_játék/obj/Debug
