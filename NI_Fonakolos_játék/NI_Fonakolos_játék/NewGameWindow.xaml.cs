@@ -20,7 +20,7 @@ namespace NI_Fonakolos_játék
     /// </summary>
     public partial class NewGameWindow : Window
     {
-        bool isAi;
+        private bool isAi;
 
         public NewGameWindow()
         {
@@ -50,14 +50,14 @@ namespace NI_Fonakolos_játék
                 this.Close();
             }
             else{
-                MessageBox.Show("Bad Input Data")
+                MessageBox.Show("Bad Input Data");
             }
 
         }
 
         private bool checkInputData(){
             if(Player1_box.Text != ""){
-                if(!isAI && Player2_box.Text == ""){
+                if(!isAi && Player2_box.Text == ""){
                     return false;
                 }
 

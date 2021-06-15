@@ -73,8 +73,6 @@ namespace NI_Fonakolos_játék
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainwindow = new MainWindow();
-            mainwindow.Show();
             this.Close();
 
         }
