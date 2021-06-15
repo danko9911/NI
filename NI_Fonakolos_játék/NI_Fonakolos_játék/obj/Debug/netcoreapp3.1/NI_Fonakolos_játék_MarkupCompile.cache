@@ -9,11 +9,19 @@ NI_Fonakolos_játék
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+<<<<<<< Updated upstream
 C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\App.xaml
 31640836139
 
 12-97862931
 1941012024413
+=======
+W:\SFM\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\App.xaml
+31640836139
+
+12-97862931
+1941362374929
+>>>>>>> Stashed changes
 MainWindow.xaml;NewGameWindow.xaml;ScoreBoard.xaml;
 
 False
