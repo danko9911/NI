@@ -22,13 +22,19 @@ namespace NI_Fonakolos_játék
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        MainWindow mw;
+        private bool isAgainstAI = false;
         public int playerTurn; //white = 0 / black = 1
         public bool isAI;
         BoardMesh game = new BoardMesh();
         Player player1 = new Player();
         Player player2 = new Player();
-        
+
+        public string p1_firstname { get; set; }
+        public string p1_lastname { get; set; }
+        public string p2_firstname { get; set; }
+        public string p2_lastname { get; set; }
+
         public MainWindow(bool isAi, string player1Name, string player2Name)
         {
             InitializeComponent();

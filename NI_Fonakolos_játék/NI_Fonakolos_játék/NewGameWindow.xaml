@@ -17,20 +17,12 @@
         <Button Content="Computer VS Player" Name="CvsP_cmp" HorizontalAlignment="Left" Margin="15,37,0,0" VerticalAlignment="Top" Width="120" Height="31" Click="CvsP_clicked" Grid.ColumnSpan="2"/>
         <Button Content="Player VS Player" Name="PvsP" HorizontalAlignment="Left" Margin="15,90,0,0" VerticalAlignment="Top" Width="120" Height="32"  Grid.ColumnSpan="2" Click="PvsP_Click" />
         <Button  x:Name="exitBTN" Content="Exit Game" HorizontalAlignment="Left" Margin="132,238,0,0" VerticalAlignment="Top" Width="120" Height="30"  Grid.Column="1" Click="exitBTN_Click"/>
-        <TextBox  x:Name="Player1_box" HorizontalAlignment="Left" Height="29" Margin="106,139,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="145" Visibility="Visible" Grid.Column="1"/>
-        <TextBox  x:Name="Player2_box"  HorizontalAlignment="Left" Height="29" Margin="106,187,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="145" Visibility="Visible" Grid.Column="1"/>
-        <Button x:Name="playBTN" Content="PLAY" HorizontalAlignment="Left" Margin="15,238,0,0" VerticalAlignment="Top" Width="120" Height="30" Grid.ColumnSpan="2" Click="playBTN_Click" IsEnabled="False" />
-        <TextBlock x:Name="Player2"  Margin="15,187,145,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Visibility="Visible" Text="Second Player: " Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="Player1"  Margin="15,144,185,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Visibility="Visible" Text="First Player: " Grid.ColumnSpan="2"/>
-        <Image Source="Resources/logo.png" Stretch="Fill" Grid.Column="1" Margin="137,25,50,175" />
         <TextBox  x:Name="Player1_box" HorizontalAlignment="Left" Height="29" Margin="106,139,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="145" Visibility="Hidden" Grid.Column="1"/>
         <TextBox  x:Name="Player2_box"  HorizontalAlignment="Left" Height="29" Margin="106,187,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="145" Visibility="Hidden" Grid.Column="1"/>
-        <Button x:Name="playBTN" Content="PLAY" HorizontalAlignment="Left" Margin="15,238,0,0" VerticalAlignment="Top" Width="120" Height="30" Grid.ColumnSpan="2" Click="playBTN_Click" Visibility="Hidden"  />
+        <Button x:Name="playBTN" Content="PLAY" HorizontalAlignment="Left" Margin="15,238,0,0" VerticalAlignment="Top" Width="120" Height="30" Visibility="Hidden" Grid.ColumnSpan="2" Click="playBTN_Click" IsEnabled="False" />
         <TextBlock x:Name="Player2"  Margin="15,187,145,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Visibility="Hidden" Text="Second Player: " Grid.ColumnSpan="2"/>
         <TextBlock x:Name="Player1"  Margin="15,144,185,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Visibility="Hidden" Text="First Player: " Grid.ColumnSpan="2"/>
-        <Image Source="/images.png" Grid.Column="1" Margin="137,-65,50,65" />
-
-
-
+        <Image Source="Resources/logo.png" Stretch="Fill" Grid.Column="1" Margin="137,25,50,175" />
+   
     </Grid>
 </Window>
