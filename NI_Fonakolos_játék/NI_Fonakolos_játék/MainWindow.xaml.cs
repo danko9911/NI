@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NI_Fonakolos_játék.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace NI_Fonakolos_játék
 {
@@ -20,27 +22,40 @@ namespace NI_Fonakolos_játék
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool isAgainstAI = false;
-        public string p1_firstname { get; set; }
-        public string p1_lastname { get; set; }
-        public string p2_firstname { get; set; }
-        public string p2_lastname { get; set; }
 
         public int playerTurn; //white = 0 / black = 1
-        Model.BoardMesh game = new Model.BoardMesh();
+        public bool isAI;
+        BoardMesh game = new BoardMesh();
+        Player player1 = new Player();
+        Player player2 = new Player();
         
-        public MainWindow(object mw, bool v, string p1)
+        public MainWindow(bool isAi, string player1Name, string player2Name)
         {
             InitializeComponent();
+            Player1Text.Text = player1.firstName = player1Name;
+
+            if (isAi) { Player2Text.Text = player2.firstName = "AI";}
+            else { Player2Text.Text = player2.firstName = player2Name; }
+
+            this.isAI = isAi;
+
+            playerTurn = RandomizeStartingPlayer();
+            playerTurnColors(playerTurn);
+
             drawBoard();
-            playerTurn = 0;
+      
         }
 
-        public void drawBoard()
+        private void drawBoard()
         {
             int id = 0;
+            bool endGame = true;
+
+            player1.Score = 0;
+            player2.Score = 0;
+
             game_board.Children.Clear();
-            foreach (Model.BoardTile tile in game.gameMesh)
+            foreach (BoardTile tile in game.gameMesh)
             {
                 Ellipse myEllipse = new Ellipse();
                 myEllipse.Width = 65;
@@ -51,17 +66,29 @@ namespace NI_Fonakolos_játék
 
                 switch (tile.field_owner)
                 {
-                    case 1: myEllipse.Fill = System.Windows.Media.Brushes.White; break;
-                    case 2: myEllipse.Fill = System.Windows.Media.Brushes.Black; break;
-                    case 3: if(playerTurn == 0) myEllipse.Fill = System.Windows.Media.Brushes.Yellow; break;
-                    case 4: if (playerTurn == 1) myEllipse.Fill = System.Windows.Media.Brushes.Orange; break;
+                    case 1: myEllipse.Fill = Brushes.White; player1.Score++;  break;
+                    case 2: myEllipse.Fill = Brushes.Black; player2.Score++; break;
+                    case 3: if (playerTurn == 0) { myEllipse.Fill = Brushes.Red; endGame = false; } break;
+                    case 4: if (playerTurn == 1) { myEllipse.Fill = Brushes.Orange; endGame = false; } break;
+                    case 5: if (playerTurn == 1) { myEllipse.Fill = Brushes.Orange; endGame = false;} else if (playerTurn == 0) { myEllipse.Fill = Brushes.Red; endGame = false; } break;
                 }
 
                 game_board.Children.Add(myEllipse);
+
+                
+
                 id++;
             }
+
+            if (endGame)
+            {
+                endGameTitle();
+            }
+
+            Player1Text.Text = player1.firstName + "\n" + player1.Score;
+            Player2Text.Text = player2.firstName + "\n" + player2.Score;
         }
-        
+
 
         private void rules_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -70,6 +97,11 @@ namespace NI_Fonakolos_játék
         }
 
         private void new_game_btn_Click(object sender, RoutedEventArgs e)
+        {
+            newGame();
+        }
+
+        private void newGame()
         {
             NewGameWindow new_game = new NewGameWindow();
             new_game.Show();
@@ -80,25 +112,90 @@ namespace NI_Fonakolos_játék
         {
             ScoreBoard scoreboard = new ScoreBoard();
             scoreboard.Show();
-            this.Close();
         
         }
 
         private void game_board_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Point p = e.GetPosition(this);
-            int newID = game.calculateMousePosition(p.X, p.Y);
-            if (game.gameMesh[newID].field_owner == playerTurn + 3)
+            try
             {
-                game.gameMesh[newID].field_owner = playerTurn + 1;
-                game.gameStep(newID);
-                playerTurn = (playerTurn + 1) % 2;
-                drawBoard();
-                
+                int newID = game.calculateMousePosition(p.X, p.Y);
+                if (game.gameMesh[newID].field_owner == playerTurn + 3 || game.gameMesh[newID].field_owner == 5)
+                {
+                    game.gameStep(newID, playerTurn + 1 );
+                    playerTurn = (playerTurn + 1) % 2;
+                    drawBoard();
+
+                    playerTurnColors(playerTurn);
+                }
+            }
+
+            catch (ArgumentOutOfRangeException )
+            {
             }
             
         }
 
-        
+        private void playerTurnColors(int playerTurn)
+        {
+            if (playerTurn == 0)
+            {
+                Player1Text.Foreground = System.Windows.Media.Brushes.Red;
+                Player2Text.Foreground = System.Windows.Media.Brushes.Black;
+            }
+
+            else if (playerTurn == 1)
+            {
+                Player2Text.Foreground = System.Windows.Media.Brushes.Orange;
+                Player1Text.Foreground = System.Windows.Media.Brushes.Black;
+            }
+        }
+
+        private int RandomizeStartingPlayer()
+        {
+            Random rand = new Random();
+            if (rand.NextDouble() < 0.5)
+            {
+                return 0;
+            }
+
+            else return 1;
+        }
+
+        private void endGameTitle()
+        {
+            string winner = "";
+            int winnerPoint = 0;
+
+            if (player1.Score > player2.Score)
+            {
+                winner = player1.firstName;
+                winnerPoint = player1.Score;
+            }
+            else {
+                winner = player2.firstName;
+                winnerPoint = player2.Score;
+            }
+            
+            
+
+            MessageBox.Show("A játék véget ért. \n A játék nyertese : " + winner + " " + winnerPoint + "Ponttal");
+        }
+
+        private void LastStateButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (game.getLastState(isAI))
+            {
+                if (!isAI)
+                {
+                   playerTurn = (playerTurn + 1) % 2;
+                }               
+                playerTurnColors(playerTurn);
+                drawBoard();
+            }          
+        }
     }
+
+        
 }

@@ -80,3 +80,11 @@ W:\SFM\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_F
 W:\SFM\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_Fonakolos_játék_MarkupCompile.lref
 W:\SFM\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_Fonakolos_játék.dll
 W:\SFM\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_Fonakolos_játék.pdb
+C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\bin\Debug\netcoreapp3.1\NI_Fonakolos_játék.dll.config
+C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\bin\Debug\netcoreapp3.1\Dapper.dll
+C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\bin\Debug\netcoreapp3.1\System.Data.SQLite.dll
+C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\SQLite.Interop.dll
+C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\SQLite.Interop.dll
+C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\SQLite.Interop.dll
+C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\SQLite.Interop.dll
+C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\NI_Fonakolos_játék.csproj.CopyComplete

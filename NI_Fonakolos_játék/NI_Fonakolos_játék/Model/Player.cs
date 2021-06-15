@@ -16,6 +16,11 @@ namespace NI_Fonakolos_játék.Model
 
         public string FullName => firstName + " " +lastName;
 
+
+        public Player()
+        {
+            Score = 0;
+        }
     }
 }
 
