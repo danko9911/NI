@@ -74,7 +74,87 @@ namespace NI_Fonakolos_játék.Model
             }
             return id;
         }
+        public int aiStepInd()
+        {
+            List<int> possibleMoveIndexList = getPossibleMoves();
+            int[] moveValueArray = new int[possibleMoveIndexList.Count];
 
+            for (int i = 0; i < possibleMoveIndexList.Count; i++)
+            {
+                moveValueArray[i] = getMoveValue(possibleMoveIndexList[i]);
+            }
+
+            int maxValue = moveValueArray.Max();
+            List<int> maxValueMoveList = new List<int>();
+
+            for (int i = 0; i < possibleMoveIndexList.Count; i++)
+            {
+                if (moveValueArray[i] == maxValue)
+                {
+                    maxValueMoveList.Add(possibleMoveIndexList[i]);
+                }
+            }
+
+            Random rndInd = new Random();
+            return maxValueMoveList[rndInd.Next(0, maxValueMoveList.Count)];
+        }
+
+        public List<int> getPossibleMoves()
+        {
+            List<int> possibleMoveIndexList = new List<int>();
+
+            for (int i = 0; i < 64; i++)
+            {
+                if (gameMesh[i].field_owner == 4 || gameMesh[i].field_owner == 5)
+                {
+                    possibleMoveIndexList.Add(i);
+                }
+            }
+
+            return possibleMoveIndexList;
+        }
+
+        public int getMoveValue(int givenID)
+        {
+            PlayerSteps newStep = new PlayerSteps(gameMesh);
+            int moveValue = 0;
+            foreach (PlayerSteps.Directions selectedDir in (PlayerSteps.Directions[])Enum.GetValues(typeof(PlayerSteps.Directions)))
+            {
+                int selectedID = givenID;
+                bool endOfTable = true;
+                int counter = 0;
+                while (endOfTable)
+                {
+                    if (((selectedID + 1) % 8 == 0 && (selectedDir == PlayerSteps.Directions.DOWN || selectedDir == PlayerSteps.Directions.DOWNLEFT || selectedDir == PlayerSteps.Directions.DOWNRIGHT)) ||
+                        (selectedID % 8 == 0 && (selectedDir == PlayerSteps.Directions.UP || selectedDir == PlayerSteps.Directions.UPLEFT || selectedDir == PlayerSteps.Directions.UPRIGHT)) ||
+                        (selectedID > 55 && (selectedDir == PlayerSteps.Directions.RIGHT || selectedDir == PlayerSteps.Directions.DOWNRIGHT || selectedDir == PlayerSteps.Directions.UPRIGHT)) ||
+                        (selectedID < 8 && (selectedDir == PlayerSteps.Directions.LEFT || selectedDir == PlayerSteps.Directions.DOWNLEFT || selectedDir == PlayerSteps.Directions.UPLEFT)))
+                    {
+                        endOfTable = false;
+                        counter = 0;
+                    }
+                    //enemy piece
+                    else if (gameMesh[selectedID + newStep.directionInT(selectedDir)].field_owner == 1)
+                    {
+                        counter++;
+                    }
+                    //self piece
+                    else if (gameMesh[selectedID + newStep.directionInT(selectedDir)].field_owner == 2)
+                    {
+                        endOfTable = false;
+                    }
+                    //no piece
+                    else
+                    {
+                        endOfTable = false;
+                        counter = 0;
+                    }
+                    selectedID += newStep.directionInT(selectedDir);
+                }
+                moveValue += counter;
+            }
+            return moveValue;
+        }
         public void gameStep(int new_id, int player)
         {
             setLastState();

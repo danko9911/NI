@@ -1,5 +1,5 @@
 ﻿NI_Fonakolos_játék
-
+1.0.0.0
 
 winexe
 C#
@@ -12,7 +12,7 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\git\NI2\NI_Fonakolos_játék\NI_Fonakolos_játék\App.xaml
 31640836139
 
-12-97862931
+14367927849
 1941433208294
 MainWindow.xaml;NewGameWindow.xaml;ScoreBoard.xaml;
 

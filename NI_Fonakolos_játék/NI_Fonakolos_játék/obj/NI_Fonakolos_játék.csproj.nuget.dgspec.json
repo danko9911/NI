@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "W:\\SFM\\NI\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj": {}
+    "C:\\git\\NI2\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj": {}
   },
   "projects": {
-    "W:\\SFM\\NI\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj": {
+    "C:\\git\\NI2\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "W:\\SFM\\NI\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj",
+        "projectUniqueName": "C:\\git\\NI2\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj",
         "projectName": "NI_Fonakolos_játék",
-        "projectPath": "W:\\SFM\\NI\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj",
-        "packagesPath": "C:\\Users\\Tibi\\.nuget\\packages\\",
-        "outputPath": "W:\\SFM\\NI\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\obj\\",
+        "projectPath": "C:\\git\\NI2\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\NI_Fonakolos_játék.csproj",
+        "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
+        "outputPath": "C:\\git\\NI2\\NI_Fonakolos_játék\\NI_Fonakolos_játék\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Tibi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -67,7 +67,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
