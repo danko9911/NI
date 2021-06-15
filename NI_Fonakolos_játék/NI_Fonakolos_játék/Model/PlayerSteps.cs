@@ -1,19 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
 
 namespace NI_Fonakolos_játék.Model
 {
     class PlayerSteps
     {
 
-        public List<BoardTile> tileList = new List<BoardTile>();
+        private List<BoardTile> tileList = new List<BoardTile>();
 
         
 
-        public PlayerSteps(List<BoardTile> tileList)
+        public PlayerSteps(List<BoardTile> initTileList)
         {
-            this.tileList = tileList;
+            foreach(var tiles in initTileList)
+            {
+                BoardTile initTile = new BoardTile(tiles);
+                tileList.Add(initTile);
+            }
         }
 
         public void nextStep(int selectedID, Directions selectedDir)
@@ -30,8 +35,10 @@ namespace NI_Fonakolos_játék.Model
 
                 while (endOfTable)
                 {
-                    if((selectedID+1)%8 == 0 && (selectedDir == Directions.DOWN || selectedDir == Directions.DOWNLEFT || selectedDir == Directions.DOWNRIGHT) ||
-                       (selectedID) % 8 == 0 && (selectedDir == Directions.UP || selectedDir == Directions.UPLEFT || selectedDir == Directions.UPRIGHT))
+                    if(((selectedID+1)%8 == 0 && (selectedDir == Directions.DOWN || selectedDir == Directions.DOWNLEFT || selectedDir == Directions.DOWNRIGHT)) ||
+                       (selectedID % 8 == 0 && (selectedDir == Directions.UP || selectedDir == Directions.UPLEFT || selectedDir == Directions.UPRIGHT)) ||
+                       (selectedID > 55 && (selectedDir == Directions.RIGHT || selectedDir == Directions.DOWNRIGHT || selectedDir == Directions.UPRIGHT)) ||
+                           (selectedID < 8 && (selectedDir == Directions.LEFT || selectedDir == Directions.DOWNLEFT || selectedDir == Directions.UPLEFT)))
                     {
                         endOfTable = false;
                     }
@@ -77,7 +84,7 @@ namespace NI_Fonakolos_játék.Model
 
             catch (ArgumentOutOfRangeException e)
             {
-                //DoNothing
+
             }
         }
 
@@ -87,11 +94,14 @@ namespace NI_Fonakolos_játék.Model
                 bool endOfTable = true;
                 bool moved = false;
                 int player = tileList[selectedID].field_owner;
+                int opponent = (tileList[selectedID].field_owner %2) + 1; 
 
                 while (endOfTable)
                 {
-                    if ((selectedID + 1) % 8 == 0 && (selectedDir == Directions.DOWN || selectedDir == Directions.DOWNLEFT || selectedDir == Directions.DOWNRIGHT) ||
-                           (selectedID) % 8 == 0 && (selectedDir == Directions.UP || selectedDir == Directions.UPLEFT || selectedDir == Directions.UPRIGHT) )
+                    if (((selectedID + 1) % 8 == 0 && (selectedDir == Directions.DOWN || selectedDir == Directions.DOWNLEFT || selectedDir == Directions.DOWNRIGHT)) ||
+                           (selectedID % 8 == 0 && (selectedDir == Directions.UP || selectedDir == Directions.UPLEFT || selectedDir == Directions.UPRIGHT)) ||
+                           (selectedID > 55 && (selectedDir == Directions.RIGHT || selectedDir == Directions.DOWNRIGHT || selectedDir == Directions.UPRIGHT)) ||
+                           (selectedID < 8 && (selectedDir == Directions.LEFT || selectedDir == Directions.DOWNLEFT || selectedDir == Directions.UPLEFT)))
                     {
                         endOfTable = false;
                     }
@@ -100,6 +110,7 @@ namespace NI_Fonakolos_játék.Model
                     {
                         if (moved)
                         {
+
                             tileList[selectedID + directionInT(selectedDir)].field_owner = player + 2;
                             //throw new Exception();
                         }
@@ -108,32 +119,43 @@ namespace NI_Fonakolos_játék.Model
 
                     }
 
-                    else if (tileList[selectedID + directionInT(selectedDir)].field_owner == (player % 2) + 1)
+                    else if (tileList[selectedID + directionInT(selectedDir)].field_owner == opponent)
                     {
 
                         moved = true;
+                        
                     }
 
-                    else
+                    else if (tileList[selectedID + directionInT(selectedDir)].field_owner == player)
+                    {
+                        endOfTable = false;
+                    }
+
+                    else if (tileList[selectedID + directionInT(selectedDir)].field_owner == opponent + 2)
+                    {
+                        if (moved)
+                        {
+                            tileList[selectedID + directionInT(selectedDir)].field_owner = 5;
+                            endOfTable = false;
+                        }
+                    }
+                    else if(tileList[selectedID + directionInT(selectedDir)].field_owner > 2)
                     {
                         endOfTable = false;
                     }
 
                     selectedID += directionInT(selectedDir);
 
-                    
                 }
             }
 
             catch (ArgumentOutOfRangeException e)
             {
-                //DoNothing
             }
         }
 
-            public List<BoardTile> finalTiles()
+        public List<BoardTile> getBoard()
         {
-
             return tileList;
         }
 
