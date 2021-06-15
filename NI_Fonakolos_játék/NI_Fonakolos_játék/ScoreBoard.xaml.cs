@@ -26,17 +26,17 @@ namespace NI_Fonakolos_játék
         {
 
             InitializeComponent();
-           // LoadPeopleList();
+            LoadPeopleList();
             listPoeple();
         }
-        /*
+        
         private void LoadPeopleList()
         {
             list = ScoreBoardView.LoadPeople();
             list = list.OrderByDescending(Player => Player.Score).ToList();
 
         }
-        */
+        
         private void listPoeple()
         {
             int k = 0;
