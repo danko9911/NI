@@ -21,16 +21,14 @@ namespace NI_Fonakolos_játék
     public partial class NewGameWindow : Window
     {
         private bool isAi;
+        public NewGameWindow() {
 
-<<<<<<< Updated upstream
-        public NewGameWindow()
-=======
-        MainWindow mw; 
-        bool isAgainstAI = false;
-        string p1 = "";
-        string p2 = "";
+            MainWindow mw;
+            bool isAgainstAI = false;
+            string p1 = "";
+            string p2 = "";
+        }
         public NewGameWindow(MainWindow mw)
->>>>>>> Stashed changes
         {
             this.mw = mw;
             InitializeComponent();
@@ -40,7 +38,6 @@ namespace NI_Fonakolos_játék
 
         private void CvsP_clicked(object sender, RoutedEventArgs e)
         {
-<<<<<<< Updated upstream
             isAi = true;
             CvsP_cmp.IsEnabled = false;
             PvsP.IsEnabled = true;
@@ -49,11 +46,9 @@ namespace NI_Fonakolos_játék
             Player2_box.IsEnabled = false;
 
             playBTN.IsEnabled = true;
-=======
             isAgainstAI = true;
             HideInputPlayer();
             playBTN.Visibility = Visibility.Visible;
->>>>>>> Stashed changes
         }
         private void exitBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -68,7 +63,6 @@ namespace NI_Fonakolos_játék
 
         private void playBTN_Click(object sender, RoutedEventArgs e)
         {
-<<<<<<< Updated upstream
             if(checkInputData()){
                 MainWindow main = new MainWindow(isAi, Player1_box.Text, Player2_box.Text);
                 main.Show();
@@ -91,12 +85,10 @@ namespace NI_Fonakolos_játék
 
             return false;
         }
-=======
             MainWindow mw = new MainWindow();
             mw.Show();
             this.Close();
         }
->>>>>>> Stashed changes
 
         private void PvsP_Click(object sender, RoutedEventArgs e)
         {
@@ -104,12 +96,10 @@ namespace NI_Fonakolos_játék
             CvsP_cmp.IsEnabled = true;
             PvsP.IsEnabled = false;
 
-<<<<<<< Updated upstream
             Player1_box.IsEnabled = true;
             Player2_box.IsEnabled = true;
 
             playBTN.IsEnabled = true;
-=======
             if (isAgainstAI)
             {
                 mw.DataContext = new MainWindow(mw, true, p1, p2);
@@ -145,19 +135,15 @@ namespace NI_Fonakolos_játék
                 }
                 else MessageBox.Show("You must type a name!");
             }
->>>>>>> Stashed changes
         }
 
         private void HideInputPlayer()
         {
-<<<<<<< Updated upstream
             Close();
-=======
             Player1.Visibility = Visibility.Hidden;
             Player1_box.Visibility = Visibility.Hidden;
             Player2_box.Visibility = Visibility.Hidden;
             Player2.Visibility = Visibility.Hidden;
->>>>>>> Stashed changes
         }
     }
 }
