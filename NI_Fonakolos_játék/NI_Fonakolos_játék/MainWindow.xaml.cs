@@ -42,6 +42,15 @@ namespace NI_Fonakolos_játék
             playerTurn = RandomizeStartingPlayer();
             playerTurnColors(playerTurn);
 
+            if (isAI && playerTurn == 1)
+            {
+                int aistep = game.aiStepInd();
+                game.gameStep(aistep, playerTurn + 1);
+                playerTurn = (playerTurn + 1) % 2;
+
+                playerTurnColors(playerTurn);
+            }
+
             drawBoard();
       
         }
@@ -120,15 +129,25 @@ namespace NI_Fonakolos_játék
             Point p = e.GetPosition(this);
             try
             {
-                int newID = game.calculateMousePosition(p.X, p.Y);
+                
+                int newID = game.calculateMousePosition(p.X, p.Y);               
                 if (game.gameMesh[newID].field_owner == playerTurn + 3 || game.gameMesh[newID].field_owner == 5)
                 {
                     game.gameStep(newID, playerTurn + 1 );
                     playerTurn = (playerTurn + 1) % 2;
-                    drawBoard();
+                    
 
                     playerTurnColors(playerTurn);
                 }
+                if (isAI && playerTurn == 1)
+                {
+                    int aistep = game.aiStepInd();
+                    game.gameStep(aistep, playerTurn + 1);
+                    playerTurn = (playerTurn + 1) % 2;
+
+                    playerTurnColors(playerTurn);
+                }
+                drawBoard();
             }
 
             catch (ArgumentOutOfRangeException )
