@@ -21,42 +21,55 @@ namespace NI_Fonakolos_játék
     public partial class NewGameWindow : Window
     {
         private bool isAi;
-        MainWindow mw;
-        bool isAgainstAI = false;
-        string p1 = "";
-        string p2 = "";
-    
-        public NewGameWindow(MainWindow mw)
+
+        public NewGameWindow()
         {
-            this.mw = mw;
             InitializeComponent();
-         
+            Player1_box.IsEnabled = false;
+            Player2_box.IsEnabled = false;
         }
 
         private void CvsP_clicked(object sender, RoutedEventArgs e)
         {
-           
-            isAgainstAI = true;
-            HideInputPlayer();
-            playBTN.Visibility = Visibility.Visible;
-        }
-        private void exitBTN_Click(object sender, RoutedEventArgs e)
-        {
+            isAi = true;
+            CvsP_cmp.IsEnabled = false;
+            PvsP.IsEnabled = true;
 
-            System.Windows.Application.Current.Shutdown();
-            /*
-              MainWindow main = new MainWindow();
-              main.Show();
-              Close();
-            */
+            Player1_box.IsEnabled = true;
+            Player2_box.IsEnabled = false;
+
+            playBTN.IsEnabled = true;
         }
+
 
         private void playBTN_Click(object sender, RoutedEventArgs e)
         {
-         
-            MainWindow mw = new MainWindow();
-            mw.Show();
-            this.Close();
+            if (checkInputData())
+            {
+                MainWindow main = new MainWindow(isAi, Player1_box.Text, Player2_box.Text);
+                main.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Bad Input Data");
+            }
+
+        }
+
+        private bool checkInputData()
+        {
+            if (Player1_box.Text != "")
+            {
+                if (!isAi && Player2_box.Text == "")
+                {
+                    return false;
+                }
+
+                return true;
+            }
+
+            return false;
         }
 
         private void PvsP_Click(object sender, RoutedEventArgs e)
@@ -65,49 +78,15 @@ namespace NI_Fonakolos_játék
             CvsP_cmp.IsEnabled = true;
             PvsP.IsEnabled = false;
 
-            if (isAgainstAI)
-            {
-                mw.DataContext = new MainWindow(mw, true, p1, p2);
+            Player1_box.IsEnabled = true;
+            Player2_box.IsEnabled = true;
 
-            }
-            else
-            {
-                if ((p1 != "") && (p2 != ""))
-                {
-                    HideInputPlayer();
-                    MainWindow gv = new MainWindow(mw, false, p1, p2);
-                    if ((p1.Split(' ').Length > 1))
-                    {
-                        gv.p1_firstname = p1.Split(' ')[0];
-                        gv.p1_lastname = p1.Split(' ')[1];
-                    }
-                    else
-                    {
-                        gv.p1_firstname = p1;
-                        gv.p1_lastname = " ";
-                    }
-                    if (p2.Split(' ').Length > 1)
-                    {
-                        gv.p2_firstname = p2.Split(' ')[0];
-                        gv.p2_lastname = p2.Split(' ')[1];
-                    }
-                    else
-                    {
-                        gv.p2_firstname = p2;
-                        gv.p2_lastname = " ";
-                    }
-                    mw.DataContext = gv;
-                }
-                else MessageBox.Show("You must type a name!");
-            }
+            playBTN.IsEnabled = true;
         }
 
-        private void HideInputPlayer()
-        { 
-            Player1.Visibility = Visibility.Hidden;
-            Player1_box.Visibility = Visibility.Hidden;
-            Player2_box.Visibility = Visibility.Hidden;
-            Player2.Visibility = Visibility.Hidden;
+        private void exitBTN_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

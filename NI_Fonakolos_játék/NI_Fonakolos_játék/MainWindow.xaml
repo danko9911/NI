@@ -47,7 +47,7 @@
                 <TextBlock x:Name="Player1Text" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32"/>
                 <TextBlock x:Name="Player2Text" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32"/>
                 <Button x:Name="LastStateButton" Content="Lépés visszavonása" Grid.Row="5"  FontSize="32" Click="LastStateButton_Click"/>
-                <Button Content="Feladás" Grid.Row="6"  FontSize="32"/>
+                <Button x:Name="SurrenderButton" Content="Feladás" Grid.Row="6"  FontSize="32" Click="SurrenderButton_Click"/>
             </Grid>
         </Grid>
     </Grid>

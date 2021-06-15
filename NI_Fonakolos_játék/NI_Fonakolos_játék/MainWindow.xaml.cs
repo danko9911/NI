@@ -22,18 +22,15 @@ namespace NI_Fonakolos_játék
     /// </summary>
     public partial class MainWindow : Window
     {
-        MainWindow mw;
-        private bool isAgainstAI = false;
         public int playerTurn; //white = 0 / black = 1
         public bool isAI;
+
+        bool endOfGame; 
+
         BoardMesh game = new BoardMesh();
         Player player1 = new Player();
         Player player2 = new Player();
 
-        public string p1_firstname { get; set; }
-        public string p1_lastname { get; set; }
-        public string p2_firstname { get; set; }
-        public string p2_lastname { get; set; }
 
         public MainWindow(bool isAi, string player1Name, string player2Name)
         {
@@ -83,9 +80,9 @@ namespace NI_Fonakolos_játék
                 {
                     case 1: myEllipse.Fill = Brushes.White; player1.Score++;  break;
                     case 2: myEllipse.Fill = Brushes.Black; player2.Score++; break;
-                    case 3: if (playerTurn == 0) { myEllipse.Fill = Brushes.Red; endGame = false; } break;
-                    case 4: if (playerTurn == 1) { myEllipse.Fill = Brushes.Orange; endGame = false; } break;
-                    case 5: if (playerTurn == 1) { myEllipse.Fill = Brushes.Orange; endGame = false;} else if (playerTurn == 0) { myEllipse.Fill = Brushes.Red; endGame = false; } break;
+                    case 3: if (playerTurn == 0 && !endOfGame) { myEllipse.Fill = Brushes.Red; endGame = false; } break;
+                    case 4: if (playerTurn == 1 && !endOfGame) { myEllipse.Fill = Brushes.Orange; endGame = false; } break;
+                    case 5: if (playerTurn == 1 && !endOfGame) { myEllipse.Fill = Brushes.Orange; endGame = false;} else if (playerTurn == 0 && !endOfGame) { myEllipse.Fill = Brushes.Red; endGame = false; } break;
                 }
 
                 game_board.Children.Add(myEllipse);
@@ -95,13 +92,15 @@ namespace NI_Fonakolos_játék
                 id++;
             }
 
-            if (endGame)
+            Player1Text.Text = player1.firstName + "\n" + player1.Score;
+            Player2Text.Text = player2.firstName + "\n" + player2.Score;
+
+            if (endGame && !endOfGame)
             {
                 endGameTitle();
             }
 
-            Player1Text.Text = player1.firstName + "\n" + player1.Score;
-            Player2Text.Text = player2.firstName + "\n" + player2.Score;
+            
         }
 
 
@@ -137,7 +136,7 @@ namespace NI_Fonakolos_játék
             {
                 
                 int newID = game.calculateMousePosition(p.X, p.Y);               
-                if (game.gameMesh[newID].field_owner == playerTurn + 3 || game.gameMesh[newID].field_owner == 5)
+                if ((game.gameMesh[newID].field_owner == playerTurn + 3 || game.gameMesh[newID].field_owner == 5) && !endOfGame )
                 {
                     game.gameStep(newID, playerTurn + 1 );
                     playerTurn = (playerTurn + 1) % 2;
@@ -206,11 +205,14 @@ namespace NI_Fonakolos_játék
             
 
             MessageBox.Show("A játék véget ért. \n A játék nyertese : " + winner + " " + winnerPoint + "Ponttal");
+
+            endOfGame = true;
+            drawBoard();
         }
 
         private void LastStateButton_Click(object sender, RoutedEventArgs e)
         {
-            if (game.getLastState(isAI))
+            if (game.getLastState(isAI) && !endOfGame)
             {
                 if (!isAI)
                 {
@@ -219,6 +221,12 @@ namespace NI_Fonakolos_játék
                 playerTurnColors(playerTurn);
                 drawBoard();
             }          
+        }
+
+        private void SurrenderButton_Click(object sender, RoutedEventArgs e)
+        {
+            endGameTitle();
+            
         }
     }
 
