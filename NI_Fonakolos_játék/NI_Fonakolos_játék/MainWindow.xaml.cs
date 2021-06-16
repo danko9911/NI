@@ -1,4 +1,5 @@
 ﻿using NI_Fonakolos_játék.Model;
+using NI_Fonakolos_játék.ModelView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,7 @@ namespace NI_Fonakolos_játék
         public MainWindow(bool isAi, string player1Name, string player2Name)
         {
             InitializeComponent();
+            ScoreBoardView.CreatePlayer();
             Player1Text.Text = player1.firstName = player1Name;
 
             if (isAi) { Player2Text.Text = player2.firstName = "AI";}
@@ -203,7 +205,9 @@ namespace NI_Fonakolos_játék
                 winner = player2.firstName;
                 winnerPoint = player2.Score;
             }
-            
+
+            ScoreBoardView.SavePlayer(player1);
+            ScoreBoardView.SavePlayer(player2);
             
 
             MessageBox.Show("A játék véget ért. \n A játék nyertese : " + winner + " " + winnerPoint + "Ponttal");

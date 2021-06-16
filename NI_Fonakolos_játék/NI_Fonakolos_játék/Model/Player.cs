@@ -10,8 +10,6 @@ namespace NI_Fonakolos_játék.Model
         public string firstName { get; set; }
         public string lastName { get; set; }
 
-        public string time { get; set; }
-
         public int Score { get; set; }
 
         public string FullName => firstName + " " +lastName;

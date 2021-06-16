@@ -53,13 +53,6 @@ namespace NI_Fonakolos_játék
                 grid.Children.Add(blocklist[i, k]);
                 k++;
                 blocklist[i, k] = new TextBlock();
-                blocklist[i, k].Text = item.time;
-                Grid.SetRow(blocklist[i, k], i);
-                Grid.SetColumn(blocklist[i, k], k);
-                blocklist[i, k].FontSize = 28;
-                grid.Children.Add(blocklist[i, k]);
-                k++;
-                blocklist[i, k] = new TextBlock();
                 blocklist[i, k].Text = item.Score.ToString();
                 Grid.SetRow(blocklist[i, k], i);
                 Grid.SetColumn(blocklist[i, k], k);
