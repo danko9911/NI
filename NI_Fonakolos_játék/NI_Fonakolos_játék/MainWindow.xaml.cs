@@ -200,17 +200,26 @@ namespace NI_Fonakolos_játék
             {
                 winner = player1.firstName;
                 winnerPoint = player1.Score;
+                MessageBox.Show("A játék véget ért. \n A játék nyertese : " + winner + " " + winnerPoint + "Ponttal");
+
+            }
+            else if (player1.Score == player2.Score)
+            {
+                MessageBox.Show("A játék véget ért. \nA játék döntettlen!");
+
             }
             else {
                 winner = player2.firstName;
                 winnerPoint = player2.Score;
+                MessageBox.Show("A játék véget ért. \n A játék nyertese : " + winner + " " + winnerPoint + "Ponttal");
+
             }
+            
 
             ScoreBoardView.SavePlayer(player1);
             ScoreBoardView.SavePlayer(player2);
             
 
-            MessageBox.Show("A játék véget ért. \n A játék nyertese : " + winner + " " + winnerPoint + "Ponttal");
 
             endOfGame = true;
             drawBoard();

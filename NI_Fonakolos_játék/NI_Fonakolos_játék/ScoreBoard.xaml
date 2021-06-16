@@ -24,7 +24,7 @@
         <Grid.ColumnDefinitions>
 
             <ColumnDefinition/>
-            
+
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBox x:Name="name"
@@ -35,7 +35,7 @@
                  FontSize="30"
                  TextAlignment="Center"
                  Background="Gray"/>
-        
+
         <TextBox x:Name="score"
                  Height="60"
                  TextWrapping="Wrap"
@@ -45,10 +45,6 @@
                  FontSize="30"
                  TextAlignment="Center"
                  Background="Gray"/>
-        <Button Content="Back" 
-                Grid.Column="2" 
-                Grid.Row="9" 
-                Click="Back_Click"
-                Height="60"/>
+        
     </Grid>
 </Window>

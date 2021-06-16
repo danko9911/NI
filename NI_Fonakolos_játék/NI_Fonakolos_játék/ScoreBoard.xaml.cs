@@ -64,10 +64,6 @@ namespace NI_Fonakolos_játék
             }
 
         }
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-
-        }
+       
     }
 }
