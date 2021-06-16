@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\
+C:\git\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\obj\Debug\netcoreapp3.1\
 NI_Fonakolos_játék
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\septe\Documents\GitHub\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\App.xaml
+C:\git\NI\NI_Fonakolos_játék\NI_Fonakolos_játék\App.xaml
 31640836139
 
 14367927849
-1941012024413
+1941433208294
 MainWindow.xaml;NewGameWindow.xaml;ScoreBoard.xaml;
 
 True

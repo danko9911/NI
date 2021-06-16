@@ -141,8 +141,9 @@ namespace NI_Fonakolos_játék
                     game.gameStep(newID, playerTurn + 1 );
                     playerTurn = (playerTurn + 1) % 2;
                     
-
                     playerTurnColors(playerTurn);
+
+                    drawBoard();
                 }
                 if (isAI && playerTurn == 1)
                 {
@@ -151,8 +152,9 @@ namespace NI_Fonakolos_játék
                     playerTurn = (playerTurn + 1) % 2;
 
                     playerTurnColors(playerTurn);
+
+                    drawBoard();
                 }
-                drawBoard();
             }
 
             catch (ArgumentOutOfRangeException )
